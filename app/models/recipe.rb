@@ -1,5 +1,7 @@
 class Recipe < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :product_id, presence: true
+
+  belongs_to :product
 
   has_many :ingredients
   has_many :supplies, through: :ingredients

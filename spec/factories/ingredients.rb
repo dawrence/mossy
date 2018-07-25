@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :ingredient do
     recipe_id { FactoryBot.create(:recipe).id }
     supply_id { FactoryBot.create(:supply).id }
+    magnitude { 'g' }
   end
 end
 

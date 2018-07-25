@@ -7,5 +7,6 @@ class CreateIngredients < ActiveRecord::Migration[5.1]
       t.integer  :amount, default: 0
       t.timestamps
     end
+    add_index :ingredients, :recipe_id
   end
 end

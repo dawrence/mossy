@@ -9,6 +9,7 @@ end
 #  id              :bigint(8)        not null, primary key
 #  type            :string           not null
 #  name            :string           not null
+#  sale_point_id   :integer
 #  description     :string
 #  published       :boolean          default(TRUE)
 #  published_at    :datetime

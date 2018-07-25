@@ -1,5 +1,12 @@
 class Category < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :sale_point_id, presence: true
+  validates :name, uniqueness: true
+
+  def available?
+    return false unless published?
+    return true if published_at <= Time.zone.now and published_until.nil?
+    Time.zone.now.between?(published_at, published_until)
+  end
 end
 
 # == Schema Information
@@ -9,6 +16,7 @@ end
 #  id              :bigint(8)        not null, primary key
 #  type            :string           not null
 #  name            :string           not null
+#  sale_point_id   :integer
 #  description     :string
 #  published       :boolean          default(TRUE)
 #  published_at    :datetime

@@ -12,5 +12,25 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:subject) { FactoryBot.create(:recipe) }
+
+  context 'Validations' do
+    it 'validates presence of product_id' do
+      expect(subject).to validate_presence_of(:product_id)
+    end
+  end
+
+  context 'Associations' do
+    it 'belong to product' do
+      expect(subject).to belong_to(:product)
+    end
+
+    it 'has many ingredients' do
+      expect(subject).to have_many(:ingredients)
+    end
+
+    it 'has many supplies through ingredients' do
+      expect(subject).to have_many(:supplies).through(:ingredients)
+    end
+  end
 end

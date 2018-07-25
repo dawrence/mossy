@@ -1,5 +1,5 @@
 class Ingredient < ApplicationRecord
-  validates :amount, presence: true
+  validates :amount, :recipe_id, :supply_id, presence: true
   validates :magnitude, inclusion: { in: %w[kg g l oz lb cc]}
 
   belongs_to :recipe
