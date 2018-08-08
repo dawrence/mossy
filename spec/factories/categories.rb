@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :category do
-    name        { Faker::Hipster.word }
-    description { Faker::Hipster.word }
-    sale_point_id { 1 }
+    sequence(:name)       { |n| "#{Faker::Hipster.word}_#{n}" }
+    description           { Faker::Hipster.word }
+    sale_point_id         { 1 }
     trait :published do
       published true
       published_at { Time.zone.now }
